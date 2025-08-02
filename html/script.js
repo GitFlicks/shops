@@ -166,7 +166,6 @@ function updateCart() {
     purchaseBtn.disabled = false;
 }
 
-// Purchase items
 function purchaseItems() {
     if (cart.length === 0) {
         showNotification('Your cart is empty!', 'error');
@@ -175,7 +174,6 @@ function purchaseItems() {
     
     const selectedPaymentMethod = paymentMethod.value;
     
-    // Disable purchase button to prevent double clicking
     purchaseBtn.disabled = true;
     purchaseBtn.textContent = 'Processing...';
     
@@ -193,7 +191,7 @@ function purchaseItems() {
     });
 }
 
-// Handle purchase result
+
 function handlePurchaseResult(success, message) {
     purchaseBtn.disabled = false;
     purchaseBtn.textContent = 'PURCHASE';
@@ -202,7 +200,6 @@ function handlePurchaseResult(success, message) {
         showNotification(message, 'success');
         cart = [];
         updateCart();
-        // Close shop after successful purchase
         setTimeout(() => {
             closeShop();
         }, 2000);
@@ -222,28 +219,24 @@ function showNotification(message, type) {
     }, 3000);
 }
 
-// Get resource name for NUI callbacks
+
 function GetParentResourceName() {
     return window.location.hostname;
 }
 
-// Handle ESC key to close shop
 document.addEventListener('keydown', function(event) {
     if (event.key === 'Escape') {
         closeShop();
     }
 });
 
-// Prevent context menu
+
 document.addEventListener('contextmenu', function(event) {
     event.preventDefault();
 });
 
-// Handle window focus/blur for better performance
 window.addEventListener('blur', function() {
-    // Pause any animations or reduce performance when not focused
 });
 
 window.addEventListener('focus', function() {
-    // Resume animations when focused
 });
